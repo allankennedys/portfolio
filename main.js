@@ -4,7 +4,7 @@ function iconColorChanger() {
     listItems.forEach(li => {
         let icon = li.querySelector('.toolIcon');
         let originalSrc = icon.src;
-        let hoverSrc = originalSrc.replace('color=ffffff', 'color=00BBFF');
+        let hoverSrc = originalSrc.replace('color=ffffff', 'color=2AB3EB');
 
         li.addEventListener('mouseover', function() {
             icon.src = hoverSrc; 
@@ -28,7 +28,7 @@ function nameColorChange(){
     let name = document.getElementById('name');
 
     profilePic.addEventListener('mouseover', function(){
-        name.style.color = '#00BBFF';
+        name.style.color = '#2AB3EB';
     });
     profilePic.addEventListener('mouseout', function(){
         name.style.color = '#ffffff';
