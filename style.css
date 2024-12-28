@@ -123,13 +123,13 @@ button:hover{
     gap: 10px;
 }
 
-#tech_skills ul{  
+#tech_skills ul, #projects_items ul{  
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
 
-#tech_skills ul li{
+#tech_skills ul li, #projects_items ul li{
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -153,4 +153,12 @@ button:hover{
 }
 .section{
     visibility: hidden;
+}
+#tech{
+    padding-bottom: 1500px;
+}
+
+.projectImg{
+    width: 500px;
+    height: 250px;
 }
