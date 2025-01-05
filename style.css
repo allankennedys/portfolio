@@ -105,6 +105,7 @@ button{
     height: 40px;
     background-color:rgba(51, 51, 51, 1) ;
     color: white;
+    justify-content: center;
 }
 
 a{
@@ -161,4 +162,24 @@ button:hover{
 .projectImg{
     width: 500px;
     height: 250px;
+}
+
+#contact{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 600px;
+}
+
+#contact form, label, textarea{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    resize: none;
+}
+input{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: rgba(68, 68, 68, 1);
 }
