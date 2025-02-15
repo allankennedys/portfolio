@@ -23,6 +23,32 @@ function iconColorChanger() {
 }
 iconColorChanger();
 
+function iconColorChanger2() {
+    let downloadIcon = document.getElementById('downloadIcon');
+    let navOption = document.querySelectorAll('.downloadCV')
+
+ navOption.forEach(option => {
+
+   
+
+    option.addEventListener('mouseover', function(){
+        dIconSrc = downloadIcon.src;
+        downloadIcon.src = dIconSrc.replace('color=ffffff', 'color=2AB3EB');
+        
+    });
+
+    option.addEventListener('mouseout', function(){
+        downloadIcon.src = dIconSrc.replace('color=2AB3EB', 'color=ffffff');
+        
+    })
+
+})};
+
+
+ 
+
+iconColorChanger2();
+
 function nameColorChange(){
     let profilePic = document.getElementById('circleImg');
     let name = document.getElementById('name');
