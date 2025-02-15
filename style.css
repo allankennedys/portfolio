@@ -227,3 +227,47 @@ a img{
     }
     
 }
+
+@media (min-width: 600px) and (max-width: 1000px) {
+    section #projects_items ul, #tech_skills ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+        padding: 0; 
+    }
+
+    #home, #home div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    #home div {
+        width: 100%;
+        text-align: center;
+        
+    }
+
+    #circleImg {
+        width: 200px;
+        height: 200px;
+        margin-top: 100px;
+    }
+
+    #tech_skills ul, #projects_items ul {
+        grid-template-columns: 1fr;
+    }
+
+    #tech_skills ul li, #projects_items ul li {
+        width: 100%;
+        margin: 0; 
+        text-align: center; 
+    }
+
+    #contact {
+        width: 100%;
+    }
+    
+}
