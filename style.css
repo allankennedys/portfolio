@@ -36,7 +36,7 @@ li a:hover{
 } */
 
 .navbar-collapse{
-    margin-left: 65%;
+    margin-left: 55%;
 }
 
 .custom-nav{
@@ -178,4 +178,9 @@ input{
     border-radius: 10px;
     border: 1px solid;
     border-color: rgba(68, 68, 68, 1);
+}
+
+a img{
+    max-width: min-content;
+    max-height: fit-content;
 }
