@@ -1,4 +1,4 @@
-ScrollReveal({reset : true}) ;
+ScrollReveal({reset : false}) ;
 
 
 ScrollReveal().reveal('.navbar', {delay:100, reset:false}) ;

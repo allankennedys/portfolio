@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+
 header{
     width: 100%;
     position: fixed;
@@ -19,7 +20,28 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 150px;
+    overflow-x: hidden;
+    gap: 40px;
+}
+
+.contactIcon img{
+    min-width: 50px;
+    position: fixed;
+    z-index: 1000;
+    bottom: 40px;
+    right: 20px;
+    
+}
+@keyframes jump {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.contactIcon img:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+    animation: jump 1s infinite;
 }
 
 li a:hover{
@@ -30,10 +52,6 @@ li a:hover{
 .iconCtrl{
     width: 50px;
 }
-/* .navbar-brand{
-    margin-right: 900px;
-    margin-left: 10px;
-} */
 
 .navbar-collapse{
     margin-left: 55%;
@@ -56,6 +74,9 @@ h3{
 }
 p{
     width: 75%;
+}
+h2{
+    text-align: center;
 }
 
 #home div{
@@ -81,6 +102,11 @@ p{
     
 }
 
+#projects_items{
+    max-width: 90%;
+    margin: 0 auto;
+    margin-top: 150px;
+}
 
 #circleImg{
     border-radius: 50%;
@@ -128,6 +154,10 @@ button:hover{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+    margin: 0 auto;
+    padding: 0;
+    
+    
 }
 
 #tech_skills ul li, #projects_items ul li{
@@ -141,7 +171,6 @@ button:hover{
     border-radius: 10px;
     text-align: center;
     align-items: center;
-    width: 500px;
     gap: 10px
 }
 
@@ -156,9 +185,13 @@ button:hover{
     visibility: hidden;
 }
 
-.projectImg{
-    width: 500px;
-    height: 250px;
+.projectVideo{
+    
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 #contact{
@@ -190,7 +223,6 @@ a img{
         flex-direction: column;
         justify-content: center;
         align-items: center; 
-        padding: 0; 
     }
 
     #home, #home div {
@@ -198,6 +230,7 @@ a img{
         flex-direction: column;
         text-align: center;
         align-items: center;
+        
     }
 
     #home div {
@@ -213,13 +246,17 @@ a img{
     }
 
     #tech_skills ul, #projects_items ul {
-        grid-template-columns: 1fr;
+        width: 100%;
+        justify-content: center;
+
+
     }
 
+
     #tech_skills ul li, #projects_items ul li {
-        width: 100%;
         margin: 0; 
         text-align: center; 
+
     }
 
     #contact {
@@ -235,6 +272,7 @@ a img{
         justify-content: center;
         align-items: center; 
         padding: 0; 
+        
     }
 
     #home, #home div {
@@ -260,14 +298,15 @@ a img{
         grid-template-columns: 1fr;
     }
 
-    #tech_skills ul li, #projects_items ul li {
-        width: 100%;
-        margin: 0; 
-        text-align: center; 
-    }
+    
 
     #contact {
         width: 100%;
     }
     
+}
+
+#tech_skills{
+    max-width: 90%;
+    margin: 0 auto;
 }
