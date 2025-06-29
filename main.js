@@ -5,6 +5,14 @@ function iconColorChanger() {
         let icon = li.querySelector('.toolIcon');
         let originalSrc = icon.src;
         let hoverSrc = originalSrc.replace('color=ffffff', 'color=2AB3EB');
+        let img = new Image();
+        img.src = hoverSrc;
+    });
+
+    listItems.forEach(li => {
+        let icon = li.querySelector('.toolIcon');
+        let originalSrc = icon.src;
+        let hoverSrc = originalSrc.replace('color=ffffff', 'color=2AB3EB');
 
         li.addEventListener('mouseover', function() {
             icon.src = hoverSrc; 
@@ -15,35 +23,33 @@ function iconColorChanger() {
         li.addEventListener('mouseout', function() {
             icon.src = originalSrc;
             let p = li.querySelector('p');
-
             p.classList.remove('active');
-
         });
     });
 }
-iconColorChanger();
 
 function iconColorChanger2() {
     let downloadIcon = document.getElementById('downloadIcon');
-    let navOption = document.querySelectorAll('.downloadCV')
+    let navOptions = document.querySelectorAll('.downloadCV');
+    
+    let originalSrc = downloadIcon.src;
+    let hoverSrc = originalSrc.replace('color=ffffff', 'color=2AB3EB');
+    let img = new Image();
+    img.src = hoverSrc;
 
- navOption.forEach(option => {
+    navOptions.forEach(option => {
+        option.addEventListener('mouseover', function() {
+            downloadIcon.src = hoverSrc;
+        });
 
-   
-
-    option.addEventListener('mouseover', function(){
-        dIconSrc = downloadIcon.src;
-        downloadIcon.src = dIconSrc.replace('color=ffffff', 'color=2AB3EB');
-        
+        option.addEventListener('mouseout', function() {
+            downloadIcon.src = originalSrc;
+        });
     });
+}
 
-    option.addEventListener('mouseout', function(){
-        downloadIcon.src = dIconSrc.replace('color=2AB3EB', 'color=ffffff');
-        
-    })
-
-})};
-
+iconColorChanger();
+iconColorChanger2();
 
  
 
