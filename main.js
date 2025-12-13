@@ -94,3 +94,27 @@ nameColorChange();
 }
 
 displayParagraph();*/
+
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('track');
+    
+
+    const originalContent = track.innerHTML;
+    
+    if (originalContent.trim() === '') {
+        console.error("carrossel vazio.");
+        return;
+    }
+
+
+    const repetitions = 1;
+    
+    let fullContent = originalContent;
+
+    for (let i = 0; i < repetitions; i++) {
+        fullContent += originalContent; 
+    }
+    
+    track.innerHTML = fullContent;
+    
+});
