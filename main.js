@@ -85,5 +85,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+
+(function initThemeToggle() {
+  const btn      = document.getElementById('themeToggle');
+  const iconSun  = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  const root     = document.documentElement;
+
+  const saved = localStorage.getItem('theme');
+  if (saved) applyTheme(saved);
+
+  btn.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') || 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    iconSun.style.display  = theme === 'dark'  ? 'none'  : 'block';
+    iconMoon.style.display = theme === 'dark'  ? 'block' : 'none';
+  }
+})();
+
 const footerCopy = document.getElementsByClassName('footer-copy')[0];
 footerCopy.innerHTML = `© ${new Date().getFullYear()} Allan Kennedy<br>Desenvolvimento focado em experiência, performance e conversão.`
