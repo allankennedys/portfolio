@@ -1,120 +1,89 @@
-function iconColorChanger() {
-    let listItems = document.querySelectorAll('#tech_skills li');
 
-    listItems.forEach(li => {
-        let icon = li.querySelector('.toolIcon');
-        let originalSrc = icon.src;
-        let hoverSrc = originalSrc.replace('color=ffffff', 'color=2AB3EB');
-        let img = new Image();
-        img.src = hoverSrc;
+(function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  const links  = document.querySelectorAll('.nav-link');
+  const toggle = document.getElementById('navToggle');
+  const menu   = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => menu.classList.remove('open'));
+  });
+
+  const sections = document.querySelectorAll('section[id], footer[id]');
+
+  function setActiveLink() {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.getBoundingClientRect().top;
+      if (top <= 100) current = sec.id;
     });
-
-    listItems.forEach(li => {
-        let icon = li.querySelector('.toolIcon');
-        let originalSrc = icon.src;
-        let hoverSrc = originalSrc.replace('color=ffffff', 'color=2AB3EB');
-
-        li.addEventListener('mouseover', function() {
-            icon.src = hoverSrc; 
-            let p = li.querySelector('p');
-            p.classList.add('active');
-        });
-        
-        li.addEventListener('mouseout', function() {
-            icon.src = originalSrc;
-            let p = li.querySelector('p');
-            p.classList.remove('active');
-        });
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      link.classList.toggle('active', href === '#' + current);
     });
-}
+  }
 
-function iconColorChanger2() {
-    let downloadIcon = document.getElementById('downloadIcon');
-    let navOptions = document.querySelectorAll('.downloadCV');
-    
-    let originalSrc = downloadIcon.src;
-    let hoverSrc = originalSrc.replace('color=ffffff', 'color=2AB3EB');
-    let img = new Image();
-    img.src = hoverSrc;
+  window.addEventListener('scroll', setActiveLink, { passive: true });
+  setActiveLink();
+})();
 
-    navOptions.forEach(option => {
-        option.addEventListener('mouseover', function() {
-            downloadIcon.src = hoverSrc;
-        });
+(function initReveal() {
+  const targets = document.querySelectorAll(
+    '.tech-card, .project-card, .stat-card, .section-header, .hero-content, .footer-inner'
+  );
 
-        option.addEventListener('mouseout', function() {
-            downloadIcon.src = originalSrc;
-        });
-    });
-}
+  targets.forEach(el => el.classList.add('reveal'));
 
-iconColorChanger();
-iconColorChanger2();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
 
- 
+  targets.forEach(el => observer.observe(el));
+})();
 
-iconColorChanger2();
+(function initProfileHover() {
+  const img  = document.getElementById('profileImg');
+  const name = document.querySelector('.hero-name');
+  if (!img || !name) return;
 
-function nameColorChange(){
-    let profilePic = document.getElementById('circleImg');
-    let name = document.getElementById('name');
+  img.addEventListener('mouseenter', () => {
+    name.style.transition = 'color 0.3s ease';
+    name.style.color = 'var(--accent)';
+  });
+  img.addEventListener('mouseleave', () => {
+    name.style.color = '';
+  });
+})();
 
-    profilePic.addEventListener('mouseover', function(){
-        name.style.color = '#2AB3EB';
-    });
-    profilePic.addEventListener('mouseout', function(){
-        name.style.color = '#ffffff';
-    });
-    
-}
-nameColorChange();
-
-//formspree
-
-/* function displayParagraph(){
-
-    let newP = document.createElement('p');
-    newP.textContent = '';
-    let presentation = document.getElementById('presentation');
-    let button = document.getElementById('ctrldev_');
-    newP.textContent = "Perfil dedicado a compartilhar projetos, soluções e insights sobre desenvolvimento de software, focando em inovação, tecnologia e boas práticas de programação. ";
-    newP.style.display = 'none';
-    presentation.appendChild(newP);
-
-    button.addEventListener('mouseover', function(){
-    newP.style.display = 'block';
-    newP.style.marginTop = '40px';
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });
 
-    button.addEventListener('mouseout', function(){
-        newP.style.display = 'none';
-    })
-    
-
-}
-
-displayParagraph();*/
-
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.getElementById('track');
-    
-
-    const originalContent = track.innerHTML;
-    
-    if (originalContent.trim() === '') {
-        console.error("carrossel vazio.");
-        return;
-    }
-
-
-    const repetitions = 1;
-    
-    let fullContent = originalContent;
-
-    for (let i = 0; i < repetitions; i++) {
-        fullContent += originalContent; 
-    }
-    
-    track.innerHTML = fullContent;
-    
-});
+const footerCopy = document.getElementsByClassName('footer-copy')[0];
+footerCopy.innerHTML = `© ${new Date().getFullYear()} Allan Kennedy<br>Desenvolvimento focado em experiência, performance e conversão.`
